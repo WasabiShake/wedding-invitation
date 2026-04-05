@@ -14,15 +14,13 @@ export default function VenuePage({ city, onBack }) {
     <section
       className="min-h-screen relative flex flex-col items-center overflow-hidden pt-20 pb-16 px-8"
       style={{
-        backgroundColor: 'var(--beige-light)',
+        backgroundColor: 'transparent',
         backgroundImage: `
           radial-gradient(ellipse at 0% 0%, rgba(78,122,48,0.07) 0%, transparent 40%),
           radial-gradient(ellipse at 100% 100%, rgba(168,50,40,0.07) 0%, transparent 40%)
         `,
       }}
     >
-      {/* Frame */}
-      <div className="frame-border" />
 
       {/* Map silhouette background */}
       <div className="venue-map-bg" aria-hidden="true">
@@ -95,24 +93,34 @@ export default function VenuePage({ city, onBack }) {
         <PiStarFourFill style={{ color: 'var(--gold-mid)', fontSize: '1rem' }} />
       </div>
 
-      {/* Events heading */}
-      <p
-        className="font-lato text-[0.7rem] tracking-[0.35em] uppercase text-center mb-6"
-        style={{ color: 'var(--text-light)' }}
-      >
-        Events &amp; Schedule
-      </p>
-
-      {/* Events grid */}
-      <div
-        className="grid gap-5 w-full max-w-5xl"
-        style={{
-          gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-          animation: 'fadeInUp 0.8s ease both',
-        }}
-      >
-        {data.events.map((event, i) => (
-          <EventCard key={event.name} event={event} index={i} />
+      {/* Grouped Events */}
+      <div className="w-full max-w-5xl flex flex-col gap-12" style={{ animation: 'fadeInUp 0.8s ease both' }}>
+        {Object.entries(
+          data.events.reduce((acc, event) => {
+            if (!acc[event.badge]) acc[event.badge] = { date: event.date, events: [] };
+            acc[event.badge].events.push(event);
+            return acc;
+          }, {})
+        ).map(([badge, { date, events }]) => (
+          <div key={badge} className="flex flex-col items-center">
+            {/* Prominent Date / Day Header */}
+            <div className="mb-8 text-center flex flex-col items-center">
+              <h2 className="font-playfair text-3xl mb-1.5" style={{ color: 'var(--gold-dark)' }}>{badge}</h2>
+              <div className="h-px w-16 mb-3" style={{ backgroundColor: 'rgba(196, 164, 119, 0.3)' }}></div>
+              <p className="font-lato tracking-[0.15em] uppercase text-sm font-semibold" style={{ color: 'var(--red-mid)' }}>{date}</p>
+            </div>
+            
+            <div
+              className="grid gap-5 w-full"
+              style={{
+                gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+              }}
+            >
+              {events.map((event, i) => (
+                <EventCard key={event.name} event={event} index={i} />
+              ))}
+            </div>
+          </div>
         ))}
       </div>
 

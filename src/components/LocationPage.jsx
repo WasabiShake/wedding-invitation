@@ -1,47 +1,23 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { IoArrowBack } from 'react-icons/io5'
 import TelanganaMap from './maps/TelanganaMap'
 import TamilNaduMap from './maps/TamilNaduMap'
 
-const KOLAM_COUNT = 14
 
 export default function LocationPage({ onSelectCity, onBack }) {
-  const kolamLeftRef = useRef(null)
-  const kolamRightRef = useRef(null)
-
-  useEffect(() => {
-    ;[kolamLeftRef, kolamRightRef].forEach(ref => {
-      const el = ref.current
-      if (!el) return
-      for (let i = 0; i < KOLAM_COUNT; i++) {
-        const d = document.createElement('div')
-        d.className = 'kolam-dot'
-        el.appendChild(d)
-      }
-    })
-    return () => {
-      if (kolamLeftRef.current) kolamLeftRef.current.innerHTML = ''
-      if (kolamRightRef.current) kolamRightRef.current.innerHTML = ''
-    }
-  }, [])
+  const [clickedCity, setClickedCity] = useState(null);
 
   return (
     <section
       className="min-h-screen relative flex flex-col items-center justify-center text-center px-8 py-12 overflow-hidden"
       style={{
-        backgroundColor: 'var(--beige-light)',
+        backgroundColor: 'transparent',
         backgroundImage: `
           radial-gradient(ellipse at 20% 20%, rgba(78,122,48,0.07) 0%, transparent 50%),
           radial-gradient(ellipse at 80% 80%, rgba(168,50,40,0.07) 0%, transparent 50%)
         `,
       }}
     >
-      {/* Frame */}
-      <div className="frame-border" />
-
-      {/* Kolam dots */}
-      <div className="kolam-strip left" ref={kolamLeftRef} />
-      <div className="kolam-strip right" ref={kolamRightRef} />
 
       {/* Back button */}
       <button
@@ -88,6 +64,7 @@ export default function LocationPage({ onSelectCity, onBack }) {
             id="btn-hyderabad"
             className="city-btn hyderabad"
             onClick={(e) => {
+              setClickedCity('hyderabad');
               const rect = e.currentTarget.querySelector('.w-14').getBoundingClientRect();
               onSelectCity('hyderabad', {
                 x: rect.left + rect.width / 2,
@@ -97,7 +74,7 @@ export default function LocationPage({ onSelectCity, onBack }) {
             aria-label="Select Hyderabad"
           >
             <div className="ripple-ring" />
-            <div className="flex items-center justify-center w-14 h-14">
+            <div className={`flex items-center justify-center w-14 h-14 transition-opacity duration-150 ${clickedCity === 'hyderabad' ? 'opacity-0' : 'opacity-100'}`}>
               <TelanganaMap className="w-full h-full" style={{ color: 'var(--gold-dark)', strokeWidth: 25 }} />
             </div>
             <div className="font-playfair text-[1.15rem] text-ink-dark tracking-wide">Hyderabad</div>
@@ -109,6 +86,7 @@ export default function LocationPage({ onSelectCity, onBack }) {
             id="btn-chennai"
             className="city-btn chennai"
             onClick={(e) => {
+              setClickedCity('chennai');
               const rect = e.currentTarget.querySelector('.w-14').getBoundingClientRect();
               onSelectCity('chennai', {
                 x: rect.left + rect.width / 2,
@@ -118,7 +96,7 @@ export default function LocationPage({ onSelectCity, onBack }) {
             aria-label="Select Chennai"
           >
             <div className="ripple-ring" />
-            <div className="flex items-center justify-center w-14 h-14">
+            <div className={`flex items-center justify-center w-14 h-14 transition-opacity duration-150 ${clickedCity === 'chennai' ? 'opacity-0' : 'opacity-100'}`}>
               <TamilNaduMap className="w-full h-full" style={{ color: 'var(--gold-dark)', strokeWidth: 2.5 }} />
             </div>
             <div className="font-playfair text-[1.15rem] text-ink-dark tracking-wide">Chennai</div>

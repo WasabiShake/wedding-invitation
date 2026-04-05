@@ -1,12 +1,15 @@
 import { BsCalendar3, BsClock } from 'react-icons/bs'
-import { GiFlowerTwirl, GiFlowers, GiMusicalNotes, GiCandleFlame, GiSparkles } from 'react-icons/gi'
+import { GiFlowerTwirl, GiFlowers, GiMusicalNotes, GiCandleFlame, GiSparkles, GiBigDiamondRing, GiDoubleNecklace } from 'react-icons/gi'
+import { MdRestaurant } from 'react-icons/md'
 
 const EVENT_ICONS = {
-  mehendi:   <GiFlowerTwirl />,
-  haldi:     <GiFlowers />,
-  sangeet:   <GiMusicalNotes />,
-  wedding:   <GiCandleFlame />,
+  mehendi: <GiFlowerTwirl />,
+  haldi: <GiFlowers />,
+  sangeet: <GiMusicalNotes />,
+  wedding: <GiDoubleNecklace />,
   reception: <GiSparkles />,
+  meal: <MdRestaurant />,
+  nischayathartham: <GiBigDiamondRing />,
 }
 
 export default function EventCard({ event, index }) {

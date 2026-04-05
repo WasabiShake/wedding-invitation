@@ -438,20 +438,34 @@ body {
   color: #6B1A3A;
 }
 
-/* ===== TRANSITION OVERLAY ===== */
-.transition-overlay {
+/* ===== APP BACKGROUND ===== */
+.app-bg {
   position: fixed;
   inset: 0;
-  background: var(--beige-light);
-  z-index: 1000;
+  z-index: -10;
+  background-color: var(--beige-light);
+  background-size: min(100%, max(600px, 50vw));
+  opacity: 0.5;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-blend-mode: normal;
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.4s ease;
 }
 
-.transition-overlay.in {
+/* ===== TRANSITION OVERLAY ===== */
+/* This is no longer used for color fading, we will fade the page wrapper instead */
+.transition-overlay {
+  display: none;
+}
+
+.page-transition-wrapper {
   opacity: 1;
-  pointer-events: all;
+  transition: opacity 0.38s ease;
+  width: 100%;
+}
+
+.page-transition-wrapper.fade-out {
+  opacity: 0;
 }
 
 /* ===== SECTION DIVIDER ===== */
@@ -511,12 +525,12 @@ body {
 
   0%,
   100% {
-    transform: rotate(45deg) translateY(0);
+    transform: translateY(0) rotate(45deg);
     opacity: 0.5;
   }
 
   50% {
-    transform: rotate(45deg) translateY(5px);
+    transform: translateY(6px) rotate(45deg);
     opacity: 1;
   }
 }
@@ -632,24 +646,7 @@ body {
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  background: var(--beige-light);
-  animation: mapOverlayFade 2.0s ease forwards;
-}
-
-@keyframes mapOverlayFade {
-  0% {
-    background-color: var(--beige-light);
-  }
-
-  /* Stay fully opaque until the page switches at 1600ms (80% of 2s) */
-  80% {
-    background-color: var(--beige-light);
-  }
-
-  100% {
-    background-color: rgba(245, 239, 228, 0);
-    /* var(--beige-light) is #F5EFE4 */
-  }
+  background: transparent;
 }
 
 .map-zoom-svg-wrapper {
@@ -692,7 +689,7 @@ body {
 
 /* ===== VENUE MAP BACKGROUND ===== */
 .venue-map-bg {
-  position: absolute;
+  position: fixed;
   inset: 0;
   display: flex;
   align-items: center;
