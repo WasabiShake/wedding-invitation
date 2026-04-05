@@ -5,6 +5,7 @@ import LocationPage from './components/LocationPage'
 import VenuePage from './components/VenuePage'
 import TelanganaMap from './components/maps/TelanganaMap'
 import TamilNaduMap from './components/maps/TamilNaduMap'
+import CalendarAnimation from './components/CalendarAnimation'
 
 // Pages: 'landing' | 'location' | 'venue'
 
@@ -37,15 +38,14 @@ export default function App() {
     setZoomCity(city)
     setZoomScale(computedScale)
     if (pos) setZoomPos(pos)
-    // 2. Switch page just before the overlay starts fading (at 80% of the 2s animation = 1600ms)
-    //    This ensures LocationPage is NEVER visible through the fading overlay.
+    // 2. Switch page just before the overlay starts fading (at 85% of 4.0s = 3400ms)
     setTimeout(() => {
       setCity(city)
       setPage('venue')
       window.scrollTo(0, 0)
-    }, 1600)
+    }, 3400)
     // 3. Remove overlay after the fade-out fully completes
-    setTimeout(() => setZoomCity(null), 2300)
+    setTimeout(() => setZoomCity(null), 4000)
   }
 
   const goBack = (target) => transition(() => setPage(target))
@@ -71,6 +71,7 @@ export default function App() {
               : <TamilNaduMap style={{ color: 'var(--gold-dark)', strokeWidth: 2.5 }} />
             }
           </div>
+          <CalendarAnimation city={zoomCity} />
         </div>
       )}
 

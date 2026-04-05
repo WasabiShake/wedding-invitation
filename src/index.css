@@ -633,7 +633,7 @@ body {
   justify-content: center;
   pointer-events: none;
   background: var(--beige-light);
-  animation: mapOverlayFade 2.0s ease forwards;
+  animation: mapOverlayFade 4.0s ease forwards;
 }
 
 @keyframes mapOverlayFade {
@@ -641,14 +641,13 @@ body {
     background-color: var(--beige-light);
   }
 
-  /* Stay fully opaque until the page switches at 1600ms (80% of 2s) */
-  80% {
+  /* Stay fully opaque until the page switches at 3400ms (85% of 4s) */
+  85% {
     background-color: var(--beige-light);
   }
 
   100% {
     background-color: rgba(245, 239, 228, 0);
-    /* var(--beige-light) is #F5EFE4 */
   }
 }
 
@@ -656,8 +655,8 @@ body {
   width: 56px;
   height: 56px;
   animation:
-    mapZoomExpand 2.0s cubic-bezier(0.4, 0, 1, 1) forwards,
-    mapZoomOpacity 2.0s ease forwards;
+    mapZoomExpand 4.0s cubic-bezier(0.4, 0, 1, 1) forwards,
+    mapZoomOpacity 4.0s ease forwards;
 }
 
 .map-zoom-svg-wrapper svg {
@@ -671,9 +670,9 @@ body {
     transform: translate(calc(var(--start-x) - 50vw), calc(var(--start-y) - 50vh)) scale(1);
   }
 
-  80%,
+  30%,
   100% {
-    /* Return to center and stop scaling right when the page switches at 1600ms */
+    /* Return to center and stop scaling quickly at 1200ms (30%), stay zoomed in while calendar animates */
     transform: translate(0, 0) scale(var(--end-scale, 15));
   }
 }
@@ -681,7 +680,7 @@ body {
 @keyframes mapZoomOpacity {
 
   0%,
-  80% {
+  85% {
     opacity: 1;
   }
 
@@ -706,4 +705,124 @@ body {
   width: 75vmin;
   height: 75vmin;
   opacity: 0.12;
+}
+
+/* ===== CALENDAR ANIMATION ===== */
+.calendar-animation-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 600;
+  pointer-events: none;
+  perspective: 1000px;
+}
+
+.calendar-widget {
+  background: var(--beige-lightest);
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(168, 50, 40, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  width: 260px;
+  overflow: hidden;
+  animation: calendarFlipRight 0.5s cubic-bezier(0.4, 0.0, 0.2, 1) both;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+}
+
+@keyframes calendarFlipRight {
+  0% {
+    transform: perspective(1000px) rotateY(-90deg) scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: perspective(1000px) rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.calendar-header {
+  background: var(--red-mid);
+  color: var(--beige-lightest);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: 600;
+  border-bottom: 2px solid var(--gold-mid);
+}
+
+.calendar-body {
+  padding: 16px;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--text-light);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: var(--text-dark);
+  position: relative;
+  z-index: 1;
+}
+
+.calendar-cell.empty {
+  visibility: hidden;
+}
+
+.calendar-cell.highlight {
+  color: var(--red-dark);
+  font-weight: 800;
+}
+
+.highlight-ring {
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--gold-mid);
+  border-radius: 50%;
+  z-index: -1;
+  animation: calendarPulseRing 1s ease-out infinite;
+}
+
+@keyframes calendarPulseRing {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+.calendar-animation-wrapper.target-reached .calendar-widget {
+  animation: targetPulse 1s ease-in-out forwards;
+}
+
+@keyframes targetPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
