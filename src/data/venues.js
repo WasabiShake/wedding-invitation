@@ -1,0 +1,63 @@
+export const venues = {
+  hyderabad: {
+    name: 'Noma Kalyana Vedika',
+    address: 'Near NFC Bridge, Nacharam - Mallapur Rd, Mallapur, Secunderabad, Telangana 500076',
+    mapsUrl: 'https://maps.app.goo.gl/TR9gmn933qSBfE9WA',
+    cityLabel: 'Hyderabad',
+    events: [
+      {
+        name: 'Mehendi Ceremony',
+        icon: 'mehendi',
+        badge: 'Day 1',
+        accent: 'green',
+        desc: 'An intimate henna ceremony adorned with fragrant jasmine and the laughter of loved ones.',
+        date: 'Tuesday, 16th June 2026',
+        time: '10:00 AM – 1:00 PM',
+      },
+      {
+        name: 'Haldi & Ritual Puja',
+        icon: 'haldi',
+        badge: 'Day 1',
+        accent: 'gold',
+        desc: 'A sacred turmeric ceremony blessing the couple with prosperity, surrounded by flower petals.',
+        date: 'Tuesday, 16th June 2026',
+        time: '3:00 PM – 5:30 PM',
+      },
+      {
+        name: 'Sangeet Night',
+        icon: 'sangeet',
+        badge: 'Day 1',
+        accent: 'maroon',
+        desc: 'An enchanting evening of music, dance performances and celebration under the palace stars.',
+        date: 'Tuesday, 16th June 2026',
+        time: '7:00 PM – 11:30 PM',
+      },
+      {
+        name: 'Wedding Ceremony',
+        icon: 'wedding',
+        badge: 'Day 2',
+        accent: 'red',
+        desc: 'The sacred Saptapadi and Vedic wedding rituals performed beneath a magnificent mandap.',
+        date: 'Wednesday, 17th June 2026',
+        time: '8:30 AM – 12:00 PM',
+      },
+    ],
+  },
+  chennai: {
+    name: 'Kanthimathi Kalyana Mandapam',
+    address: 'B.Narasimma Road North Boag Road, 2nd St, T. Nagar, Chennai, Tamil Nadu 600017',
+    mapsUrl: 'https://maps.app.goo.gl/vdkavtDVZ814FPgi7',
+    cityLabel: 'Chennai',
+    events: [
+      {
+        name: 'Reception Dinner',
+        icon: 'reception',
+        badge: 'Day 1',
+        accent: 'dark',
+        desc: 'A grand celebration dinner for the extended family and friends with live music.',
+        date: 'Saturday, 20th June 2026',
+        time: '6:30 PM – 10:30 PM',
+      },
+    ],
+  },
+}
