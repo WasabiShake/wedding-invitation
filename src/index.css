@@ -98,7 +98,8 @@ body {
   font-size: clamp(2rem, 5vw, 3.5rem);
   margin: -0.5rem 0;
   display: block;
-  animation: fadeInUp 1.65s ease both, pulse 2.5s ease-in-out infinite;
+  animation: fadeInUp 1.6s ease both;
+  animation-delay: 0.08s;
 }
 
 /* ===== CORNER ORNAMENTS ===== */

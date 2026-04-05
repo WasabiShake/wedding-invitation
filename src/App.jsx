@@ -1,11 +1,13 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef } from 'react'
 import TransitionOverlay from './components/TransitionOverlay'
 import LandingPage from './components/LandingPage'
 import LocationPage from './components/LocationPage'
 import VenuePage from './components/VenuePage'
 import TelanganaMap from './components/maps/TelanganaMap'
 import TamilNaduMap from './components/maps/TamilNaduMap'
+import IntroPage, { MuteIcon } from './components/IntroPage'
 import templeBg from './assets/temple.png'
+import bgMusic from './assets/until_i_found_you.ogg'
 
 function CornerOrnamentSVG() {
   return (
@@ -25,7 +27,7 @@ function BorderDecorations() {
   return (
     <div className="fixed inset-0 pointer-events-none z-[100]">
       <div className="frame-border" />
-      
+
       <div className="corner-ornament corner-tl"><CornerOrnamentSVG /></div>
       <div className="corner-ornament corner-tr"><CornerOrnamentSVG /></div>
       <div className="corner-ornament corner-bl"><CornerOrnamentSVG /></div>
@@ -36,12 +38,34 @@ function BorderDecorations() {
 
 // Pages: 'landing' | 'location' | 'venue'
 
+
 export default function App() {
   const [page, setPage] = useState('landing')
   const [selectedCity, setCity] = useState(null)
   const [overlayActive, setOverlay] = useState(false)
   const [zoomCity, setZoomCity] = useState(null) // drives the map zoom animation
   const [zoomPos, setZoomPos] = useState({ x: 0, y: 0 }) // animation origin
+
+  // Background music
+  const audioRef = useRef(null)
+  const [muted, setMuted] = useState(false)
+  const [introVisible, setIntroVisible] = useState(true)
+
+  const handleBegin = ({ muted: startMuted }) => {
+    if (audioRef.current) {
+      audioRef.current.muted = startMuted
+      audioRef.current.play().catch(() => {})
+    }
+    setMuted(startMuted)
+    // IntroPage handles its own fade; remove it from DOM after transition
+    setTimeout(() => setIntroVisible(false), 700)
+  }
+
+  const toggleMute = () => {
+    if (audioRef.current) audioRef.current.muted = !muted
+    setMuted(m => !m)
+  }
+
   const [zoomScale, setZoomScale] = useState(15) // exact dynamic scale factor to match 75vmin
 
   const transition = useCallback((callback) => {
@@ -65,7 +89,7 @@ export default function App() {
     setZoomCity(city)
     setZoomScale(computedScale)
     if (pos) setZoomPos(pos)
-    
+
     // Start fading out the current page wrapper early during zoom
     setTimeout(() => setOverlay(true), 1220)
 
@@ -75,7 +99,7 @@ export default function App() {
       setCity(city)
       setPage('venue')
       window.scrollTo(0, 0)
-      
+
       // Complete fade-in of the new VenuePage
       setTimeout(() => setOverlay(false), 100)
     }, 1600)
@@ -87,6 +111,42 @@ export default function App() {
 
   return (
     <>
+      {/* Background music */}
+      <audio ref={audioRef} src={bgMusic} loop preload="auto" />
+
+      {/* Intro splash */}
+      {introVisible && <IntroPage onBegin={handleBegin} />}
+
+      {/* Floating mute button — hidden while intro is showing */}
+      {!introVisible && (
+        <button
+          onClick={toggleMute}
+          title={muted ? 'Unmute music' : 'Mute music'}
+          aria-label={muted ? 'Unmute music' : 'Mute music'}
+          style={{
+            position: 'fixed',
+            bottom: '1.4rem',
+            right: '1.4rem',
+            zIndex: 200,
+            width: '2.4rem',
+            height: '2.4rem',
+            borderRadius: '50%',
+            border: '1px solid rgba(212,175,55,0.45)',
+            background: 'rgba(250,247,242,0.75)',
+            backdropFilter: 'blur(6px)',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'var(--gold-dark)',
+            transition: 'background 0.25s, border-color 0.25s',
+            boxShadow: '0 2px 10px rgba(0,0,0,0.08)',
+          }}
+        >
+          <MuteIcon muted={muted} />
+        </button>
+      )}
+
       <div className="app-bg" style={{ backgroundImage: `url(${templeBg})` }} />
       <BorderDecorations />
       <TransitionOverlay active={overlayActive} />
@@ -111,11 +171,13 @@ export default function App() {
         </div>
       )}
 
-      <main className={`page-transition-wrapper ${overlayActive ? 'fade-out' : ''}`}>
-        {page === 'landing' && <LandingPage onEnter={goToLocation} />}
-        {page === 'location' && <LocationPage onSelectCity={goToVenue} onBack={() => goBack('landing')} />}
-        {page === 'venue' && <VenuePage city={selectedCity} onBack={() => goBack('location')} />}
-      </main>
+      {!introVisible && (
+        <main className={`page-transition-wrapper ${overlayActive ? 'fade-out' : ''}`}>
+          {page === 'landing' && <LandingPage onEnter={goToLocation} />}
+          {page === 'location' && <LocationPage onSelectCity={goToVenue} onBack={() => goBack('landing')} />}
+          {page === 'venue' && <VenuePage city={selectedCity} onBack={() => goBack('location')} />}
+        </main>
+      )}
     </>
   )
 }
