@@ -15,11 +15,11 @@ export const venues = {
         time: '7:30 AM – 9:30 AM',
       },*/
       {
-        name: 'Viratham',
+        name: 'Vrutham',
         icon: 'mehendi',
         badge: 'Day 1',
         accent: 'red',
-        desc: 'An intimate henna ceremony adorned with fragrant jasmine and the laughter of loved ones.',
+        desc: 'A sacred ritual symbolising the transition to married life, where a protective yellow thread is tied to invite divine grace and ancestral blessings.',
         date: 'Tuesday, 16th June 2026',
         time: '06:30 AM – 10:00 AM',
       },
@@ -108,7 +108,7 @@ export const venues = {
         icon: 'reception',
         badge: 'Day 1',
         accent: 'gold',
-        desc: 'A grand celebration dinner for the extended family and friends with live music.',
+        desc: 'A grand celebration dinner for the extended family and friends.',
         date: 'Saturday, 20th June 2026',
         time: '6:30 PM – 10:30 PM',
       },
