@@ -365,28 +365,31 @@ body {
 .venue-name-link {
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.6rem, 4vw, 2.8rem);
-  color: var(--text-dark);
+  color: var(--gold-dark);
   text-decoration: none;
   position: relative;
   display: inline-block;
-  transition: color 0.3s;
+  transition: color 0.3s, border-color 0.3s;
+  border-bottom: 2px dotted rgba(212, 175, 55, 0.4);
+  padding-bottom: 4px;
 }
 
 .venue-name-link::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   left: 0;
   width: 100%;
   height: 2px;
   background: linear-gradient(90deg, var(--gold-mid), var(--red-mid));
   transform: scaleX(0);
-  transform-origin: left;
+  transform-origin: center;
   transition: transform 0.4s ease;
 }
 
 .venue-name-link:hover {
-  color: var(--gold-dark);
+  color: var(--red-mid);
+  border-bottom-color: transparent;
 }
 
 .venue-name-link:hover::after {
