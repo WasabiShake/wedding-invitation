@@ -97,16 +97,21 @@ export default function VenuePage({ city, onBack }) {
       <div className="w-full max-w-5xl flex flex-col gap-12" style={{ animation: 'fadeInUp 0.8s ease both' }}>
         {Object.entries(
           data.events.reduce((acc, event) => {
-            if (!acc[event.badge]) acc[event.badge] = { date: event.date, events: [] };
-            acc[event.badge].events.push(event);
+            const key = event.day || event.date;
+            if (!acc[key]) acc[key] = { day: event.day, date: event.date, events: [] };
+            acc[key].events.push(event);
             return acc;
           }, {})
-        ).map(([badge, { date, events }]) => (
-          <div key={badge} className="flex flex-col items-center">
+        ).map(([key, { day, date, events }]) => (
+          <div key={key} className="flex flex-col items-center">
             {/* Prominent Date / Day Header */}
             <div className="mb-8 text-center flex flex-col items-center">
-              <h2 className="font-playfair text-3xl mb-1.5" style={{ color: 'var(--gold-dark)' }}>{badge}</h2>
-              <div className="h-px w-16 mb-3" style={{ backgroundColor: 'rgba(196, 164, 119, 0.3)' }}></div>
+              {day && (
+                <>
+                  <h2 className="font-playfair text-3xl mb-1.5" style={{ color: 'var(--gold-dark)' }}>{day}</h2>
+                  <div className="h-px w-16 mb-3" style={{ backgroundColor: 'rgba(196, 164, 119, 0.3)' }}></div>
+                </>
+              )}
               <p className="font-lato tracking-[0.15em] uppercase text-sm font-semibold" style={{ color: 'var(--red-mid)' }}>{date}</p>
             </div>
             

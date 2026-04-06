@@ -17,8 +17,9 @@ export const venues = {
       {
         name: 'Vrutham',
         icon: 'mehendi',
-        badge: 'Day 1',
-        accent: 'red',
+        day: 'Day 1',
+        badge: 'Pre-Wedding Ritual',
+        accent: 'gold',
         desc: 'A sacred ritual symbolising the transition to married life, where a protective yellow thread is tied to invite divine grace and ancestral blessings.',
         date: 'Tuesday, 16th June 2026',
         time: '06:30 AM – 10:00 AM',
@@ -26,8 +27,9 @@ export const venues = {
       {
         name: 'Nischayathartham',
         icon: 'nischayathartham',
-        badge: 'Day 1',
-        accent: 'gold',
+        day: 'Day 1',
+        badge: 'Engagement',
+        accent: 'red',
         desc: 'The formal engagement ceremony where the bride and groom exchange rings and blessings from both families.',
         date: 'Tuesday, 16th June 2026',
         time: '11:00 AM – 12:00 PM',
@@ -44,7 +46,8 @@ export const venues = {
       {
         name: 'Haldi',
         icon: 'haldi',
-        badge: 'Day 1',
+        day: 'Day 1',
+        badge: 'Celebration',
         accent: 'gold',
         desc: 'A sacred turmeric ceremony blessing the couple with prosperity, surrounded by flower petals.',
         date: 'Tuesday, 16th June 2026',
@@ -53,7 +56,8 @@ export const venues = {
       {
         name: 'Sangeet Night',
         icon: 'sangeet',
-        badge: 'Day 1',
+        day: 'Day 1',
+        badge: 'Music & Dance',
         accent: 'red',
         desc: 'An enchanting evening of music, dance performances and celebration under the palace stars.',
         date: 'Tuesday, 16th June 2026',
@@ -80,7 +84,8 @@ export const venues = {
       {
         name: 'Wedding Ceremony',
         icon: 'wedding',
-        badge: 'Day 2',
+        day: 'Day 2',
+        badge: 'Wedding',
         accent: 'gold',
         desc: 'The sacred Saptapadi and Vedic wedding rituals performed beneath a magnificent mandap.',
         date: 'Wednesday, 17th June 2026',
@@ -106,7 +111,7 @@ export const venues = {
       {
         name: 'Reception',
         icon: 'reception',
-        badge: 'Day 1',
+        badge: 'Dinner Celebration',
         accent: 'gold',
         desc: 'A grand celebration dinner for the extended family and friends.',
         date: 'Saturday, 20th June 2026',
