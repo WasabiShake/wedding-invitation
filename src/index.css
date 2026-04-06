@@ -464,7 +464,7 @@ body {
 
 .page-transition-wrapper {
   opacity: 1;
-  transition: opacity 0.38s ease, filter 0.4s ease;
+  transition: opacity 0.38s ease;
   width: 100%;
 }
 
