@@ -464,12 +464,29 @@ body {
 
 .page-transition-wrapper {
   opacity: 1;
-  transition: opacity 0.38s ease;
+  transition: opacity 0.38s ease, filter 0.4s ease;
+  filter: blur(0px);
   width: 100%;
 }
 
 .page-transition-wrapper.fade-out {
   opacity: 0;
+}
+
+.page-transition-wrapper.is-zooming {
+  transition: opacity 0.38s ease, filter 1.6s cubic-bezier(0.4, 0, 1, 1);
+  filter: blur(12px);
+}
+
+/* ===== DEPTH OF FIELD BLUR ===== */
+.app-blur-anim {
+  transition: filter 0.4s ease;
+  filter: blur(0px);
+}
+
+.app-blur-anim.is-zooming {
+  transition: filter 1.6s cubic-bezier(0.4, 0, 1, 1);
+  filter: blur(12px);
 }
 
 /* ===== SECTION DIVIDER ===== */

@@ -23,9 +23,9 @@ function CornerOrnamentSVG() {
   )
 }
 
-function BorderDecorations() {
+function BorderDecorations({ isZooming }) {
   return (
-    <div className="fixed inset-0 pointer-events-none z-[100]">
+    <div className={`fixed inset-0 pointer-events-none z-[100] app-blur-anim ${isZooming ? 'is-zooming' : ''}`}>
       <div className="frame-border" />
 
       <div className="corner-ornament corner-tl"><CornerOrnamentSVG /></div>
@@ -45,6 +45,7 @@ export default function App() {
   const [overlayActive, setOverlay] = useState(false)
   const [zoomCity, setZoomCity] = useState(null) // drives the map zoom animation
   const [zoomPos, setZoomPos] = useState({ x: 0, y: 0 }) // animation origin
+  const [isZooming, setIsZooming] = useState(false) // drives the depth of field blur
 
   // Background music
   const audioRef = useRef(null)
@@ -88,6 +89,7 @@ export default function App() {
     // 1. Start zoom animation immediately
     setZoomCity(city)
     setZoomScale(computedScale)
+    setIsZooming(true)
     if (pos) setZoomPos(pos)
 
     // Start fading out the current page wrapper early during zoom
@@ -96,6 +98,7 @@ export default function App() {
     // 2. Switch page just before the overlay starts fading (at 80% of the 2s animation = 1600ms)
     //    This ensures LocationPage is NEVER visible through the fading overlay.
     setTimeout(() => {
+      setIsZooming(false)
       setCity(city)
       setPage('venue')
       window.scrollTo(0, 0)
@@ -147,8 +150,8 @@ export default function App() {
         </button>
       )}
 
-      <div className="app-bg" style={{ backgroundImage: `url(${templeBg})` }} />
-      <BorderDecorations />
+      <div className={`app-bg app-blur-anim ${isZooming ? 'is-zooming' : ''}`} style={{ backgroundImage: `url(${templeBg})` }} />
+      <BorderDecorations isZooming={isZooming} />
       <TransitionOverlay active={overlayActive} />
 
       {/* Map zoom overlay — lives above all pages */}
@@ -172,7 +175,7 @@ export default function App() {
       )}
 
       {!introVisible && (
-        <main className={`page-transition-wrapper ${overlayActive ? 'fade-out' : ''}`}>
+        <main className={`page-transition-wrapper ${overlayActive ? 'fade-out' : ''} ${isZooming ? 'is-zooming' : ''}`}>
           {page === 'landing' && <LandingPage onEnter={goToLocation} />}
           {page === 'location' && <LocationPage onSelectCity={goToVenue} onBack={() => goBack('landing')} />}
           {page === 'venue' && <VenuePage city={selectedCity} onBack={() => goBack('location')} />}
