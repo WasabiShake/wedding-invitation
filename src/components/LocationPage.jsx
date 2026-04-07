@@ -9,7 +9,7 @@ export default function LocationPage({ onSelectCity, onBack }) {
 
   return (
     <section
-      className="min-h-screen relative flex flex-col items-center justify-start pt-[25vh] text-center px-8 pb-12 overflow-hidden"
+      className="min-h-screen relative flex flex-col items-center justify-start pt-[15vh] text-center px-8 pb-12 overflow-hidden"
       style={{
         backgroundColor: 'transparent',
         backgroundImage: `
