@@ -85,7 +85,7 @@ export default function IntroPage({ onBegin }) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'start',
         backgroundColor: 'transparent',
         backgroundImage: `
           radial-gradient(ellipse at 10% 20%, rgba(168,50,40,0.08) 0%, transparent 50%),
@@ -96,6 +96,7 @@ export default function IntroPage({ onBegin }) {
         transition: 'opacity 0.7s ease',
         gap: '2rem',
         padding: '2rem',
+        paddingTop: '25vh'
       }}
     >
       {/* Mandala ring — mirrors LandingPage */}
