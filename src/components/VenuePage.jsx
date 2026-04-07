@@ -42,7 +42,7 @@ export default function VenuePage({ city, onBack }) {
 
       {/* Venue header */}
       <div
-        className="text-center mb-10 relative z-[2]"
+        className="text-center mb-4 relative z-[2]"
         style={{ animation: 'fadeInUp 0.6s ease both' }}
       >
         {/* City tag */}
@@ -114,7 +114,7 @@ export default function VenuePage({ city, onBack }) {
               )}
               <p className="font-lato tracking-[0.15em] uppercase text-sm font-semibold" style={{ color: 'var(--red-mid)' }}>{date}</p>
             </div>
-            
+
             <div
               className="grid gap-5 w-full"
               style={{

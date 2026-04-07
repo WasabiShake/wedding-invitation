@@ -449,7 +449,7 @@ body {
   z-index: -10;
   background-color: var(--beige-light);
   background-size: min(100%, max(600px, 50vw));
-  opacity: 0.5;
+  /* opacity: 0.5; */
   background-position: bottom center;
   background-repeat: no-repeat;
   background-blend-mode: normal;

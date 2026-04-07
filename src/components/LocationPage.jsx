@@ -9,7 +9,7 @@ export default function LocationPage({ onSelectCity, onBack }) {
 
   return (
     <section
-      className="min-h-screen relative flex flex-col items-center justify-center text-center px-8 py-12 overflow-hidden"
+      className="min-h-screen relative flex flex-col items-center justify-start pt-[25vh] text-center px-8 pb-12 overflow-hidden"
       style={{
         backgroundColor: 'transparent',
         backgroundImage: `
@@ -44,7 +44,7 @@ export default function LocationPage({ onSelectCity, onBack }) {
           className="font-cormorant font-light text-ink-dark mb-2"
           style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', animation: 'fadeInUp 0.7s ease both' }}
         >
-          Where will you <span className="gold-span">join us?</span>
+          Where will you <span className="gold-span px-1">join us?</span>
         </h1>
 
         <p
