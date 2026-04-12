@@ -25,8 +25,8 @@ export default function VenuePage({ city, onBack }) {
       {/* Map silhouette background */}
       <div className="venue-map-bg" aria-hidden="true">
         {city === 'hyderabad'
-          ? <TelanganaMap className="w-full h-full" style={{ color: 'var(--gold-dark)', strokeWidth: 25 }} />
-          : <TamilNaduMap className="w-full h-full" style={{ color: 'var(--gold-dark)', strokeWidth: 2.5 }} />
+          ? <TelanganaMap className="w-full h-full" style={{ color: 'var(--magenta-dark)', strokeWidth: 25 }} />
+          : <TamilNaduMap className="w-full h-full" style={{ color: 'var(--magenta-dark)', strokeWidth: 2.5 }} />
         }
       </div>
 
@@ -34,8 +34,7 @@ export default function VenuePage({ city, onBack }) {
       <button
         id="back-to-location"
         onClick={onBack}
-        className="absolute top-6 left-6 z-20 flex items-center gap-1.5 bg-transparent border border-gold-mid/40 font-lato text-[0.78rem] tracking-[0.15em] px-4 py-2 transition-all duration-300 hover:bg-gold-mid/10 hover:border-gold-mid"
-        style={{ color: 'var(--gold-dark)' }}
+        className="absolute top-6 left-6 glass-back-btn"
       >
         <IoArrowBack className="text-base" /> Cities
       </button>
@@ -49,9 +48,9 @@ export default function VenuePage({ city, onBack }) {
         <div
           className="inline-flex items-center gap-1.5 font-lato text-[0.7rem] tracking-[0.3em] uppercase border px-3.5 py-1 mb-4 rounded-sm"
           style={{
-            background: 'var(--beige-mid)',
-            borderColor: 'var(--gold-mid)',
-            color: 'var(--gold-dark)',
+            background: 'var(--magenta-lightest)',
+            borderColor: 'var(--magenta-mid)',
+            color: 'var(--magenta-dark)',
           }}
         >
           <MdLocationPin className="text-base" /> {data.cityLabel}
@@ -74,7 +73,7 @@ export default function VenuePage({ city, onBack }) {
           {data.name}
           <span
             className="inline-block text-base ml-1.5 align-middle"
-            style={{ color: 'var(--red-mid)', animation: 'bounce 2s ease-in-out infinite' }}
+            style={{ color: 'var(--aqua-mid)', animation: 'bounce 2s ease-in-out infinite' }}
           >
             <MdLocationPin />
           </span>
@@ -90,11 +89,11 @@ export default function VenuePage({ city, onBack }) {
 
       {/* Divider */}
       <div className="section-divider">
-        <PiStarFourFill style={{ color: 'var(--gold-mid)', fontSize: '1rem' }} />
+        <PiStarFourFill style={{ color: 'var(--magenta-mid)', fontSize: '1rem' }} />
       </div>
 
       {/* Grouped Events */}
-      <div className="w-full max-w-5xl flex flex-col gap-12" style={{ animation: 'fadeInUp 0.8s ease both' }}>
+      <div className="w-full max-w-5xl flex flex-col gap-12">
         {Object.entries(
           data.events.reduce((acc, event) => {
             const key = event.day || event.date;
@@ -105,14 +104,29 @@ export default function VenuePage({ city, onBack }) {
         ).map(([key, { day, date, events }]) => (
           <div key={key} className="flex flex-col items-center">
             {/* Prominent Date / Day Header */}
-            <div className="mb-8 text-center flex flex-col items-center">
+            <div className="mb-8 text-center flex flex-col items-center gap-2">
               {day && (
-                <>
-                  <h2 className="font-playfair text-3xl mb-1.5" style={{ color: 'var(--gold-dark)' }}>{day}</h2>
-                  <div className="h-px w-16 mb-3" style={{ backgroundColor: 'rgba(196, 164, 119, 0.3)' }}></div>
-                </>
+                <h2
+                  className="font-playfair text-3xl px-6 pb-2 pt-1 rounded-full"
+                  style={{
+                    color: 'var(--magenta-dark)',
+                    background: '#fed5cc70',
+                    backdropFilter: 'blur(4px)',
+                    WebkitBackdropFilter: 'blur(4px)',
+                    boxShadow: '0 4px 20px rgba(158, 16, 69, 0.06)',
+                  }}
+                >{day}</h2>
               )}
-              <p className="font-lato tracking-[0.15em] uppercase text-sm font-semibold" style={{ color: 'var(--red-mid)' }}>{date}</p>
+              <p
+                className="font-lato tracking-[0.15em] uppercase text-sm font-semibold px-5 py-1.5 rounded-full"
+                style={{
+                  color: 'var(--aqua-mid)',
+                  background: '#fed5cc70',
+                  backdropFilter: 'blur(4px)',
+                  WebkitBackdropFilter: 'blur(4px)',
+                  boxShadow: '0 4px 20px rgba(158, 16, 69, 0.06)',
+                }}
+              >{date}</p>
             </div>
 
             <div

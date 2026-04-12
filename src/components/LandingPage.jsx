@@ -72,7 +72,7 @@ export default function LandingPage({ onEnter }) {
         </p>
 
         <div className="garland-line">
-          <GiFlowerEmblem style={{ color: 'var(--red-mid)', fontSize: '1.1rem' }} />
+          <GiFlowerEmblem style={{ color: 'var(--aqua-mid)', fontSize: '1.1rem' }} />
         </div>
 
         <p
@@ -85,8 +85,8 @@ export default function LandingPage({ onEnter }) {
         {/* Names */}
         <div className="relative px-10 py-6">
           <div
-            className="bride-name gold-text px-2 pt-4"
-            style={{ animation: 'goldShimmer 3s linear infinite, fadeInUp 1.6s ease both' }}
+            className="bride-name magenta-text px-2 pt-4"
+            style={{ animation: 'magentaShimmer 3s linear infinite, fadeInUp 1.6s ease both' }}
           >
             Vaishnavi
           </div>
@@ -94,8 +94,8 @@ export default function LandingPage({ onEnter }) {
             &amp;
           </span>
           <div
-            className="groom-name gold-text px-2 pt-2"
-            style={{ animation: 'goldShimmer 3s linear infinite, fadeInUp 1.6s ease both', animationDelay: '0.15s' }}
+            className="groom-name magenta-text px-2 pt-2"
+            style={{ animation: 'magentaShimmer 3s linear infinite, fadeInUp 1.6s ease both', animationDelay: '0.15s' }}
           >
             Abishek
           </div>
@@ -104,23 +104,43 @@ export default function LandingPage({ onEnter }) {
         <div className="garland-line">
           <PiStarFourFill style={{ color: 'var(--green-mid)', fontSize: '1.1rem' }} />
         </div>
+      </div>
 
+      {/* Date pill — outside animated wrapper so backdrop-filter works */}
+      <div
+        className="relative z-10 mt-2 px-6 py-1.5 rounded-full"
+        style={{
+          background: '#fed5cc87',
+          backdropFilter: 'blur(4px)',
+          WebkitBackdropFilter: 'blur(4px)',
+          border: '1px solid rgba(158, 16, 69, 0.15)',
+          display: 'inline-block',
+          animation: 'fadeInUp 1.8s ease both'
+        }}
+      >
         <p
-          className="font-cormorant tracking-[0.25em] font-bold mt-2"
-          style={{ fontSize: 'clamp(1.2rem, 3vw, 1.5rem)', color: 'var(--gold-dark)', animation: 'fadeInUp 1.8s ease both' }}
+          className="font-cormorant tracking-[0.25em] font-bold"
+          style={{ fontSize: 'clamp(1.2rem, 3vw, 1.5rem)', color: 'var(--magenta-dark)' }}
         >
           June 17 &nbsp;·&nbsp; 2026
         </p>
+      </div>
 
-        {/* CTA */}
+      {/* CTA — no animated parent so backdrop-filter works */}
+      <div className="relative z-10 mt-8 flex flex-col items-center gap-2">
         <div
-          className="mt-8 flex flex-col items-center gap-2"
-          style={{ animation: 'fadeInUp 2s ease both' }}
+          className="px-5 py-1.5 rounded-full"
+          style={{
+            background: '#fed5cc87',
+            backdropFilter: 'blur(4px)',
+            WebkitBackdropFilter: 'blur(4px)',
+            border: '1px solid rgba(158, 16, 69, 0.1)',
+            animation: 'fadeInUp 2s ease both',
+          }}
         >
-          <p className="font-lato font-medium tracking-[0.25em] text-[0.85rem] uppercase" style={{ color: 'var(--text-mid)' }}>
+          <p className="font-lato font-medium tracking-[0.25em] text-[0.72rem] uppercase" style={{ color: 'var(--text-mid)' }}>
             Tap to open your invitation
           </p>
-          <div className="cta-arrow" />
         </div>
       </div>
     </section>

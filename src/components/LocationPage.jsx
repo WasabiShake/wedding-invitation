@@ -23,8 +23,7 @@ export default function LocationPage({ onSelectCity, onBack }) {
       <button
         id="back-to-landing"
         onClick={onBack}
-        className="absolute top-6 left-6 z-20 flex items-center gap-1.5 bg-transparent border border-gold-mid/40 font-lato text-[0.78rem] tracking-[0.15em] px-4 py-2 transition-all duration-300 hover:bg-gold-mid/10 hover:border-gold-mid"
-        style={{ color: 'var(--gold-dark)' }}
+        className="absolute top-6 left-6 glass-back-btn"
       >
         <IoArrowBack className="text-base" /> Back
       </button>
@@ -44,7 +43,7 @@ export default function LocationPage({ onSelectCity, onBack }) {
           className="font-cormorant font-light text-ink-dark mb-2"
           style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', animation: 'fadeInUp 0.7s ease both' }}
         >
-          Where will you <span className="gold-span px-1">join us?</span>
+          Where will you <span className="magenta-span px-1">join us?</span>
         </h1>
 
         <p
@@ -57,12 +56,12 @@ export default function LocationPage({ onSelectCity, onBack }) {
         {/* City buttons */}
         <div
           className="flex gap-12 justify-center flex-wrap"
-          style={{ animation: 'fadeInUp 0.9s ease both' }}
         >
           {/* Hyderabad */}
           <button
             id="btn-hyderabad"
             className="city-btn hyderabad"
+            style={{ animation: 'fadeIn 0.9s ease both' }}
             onClick={(e) => {
               setClickedCity('hyderabad');
               const rect = e.currentTarget.querySelector('.w-14').getBoundingClientRect();
@@ -75,7 +74,7 @@ export default function LocationPage({ onSelectCity, onBack }) {
           >
             <div className="ripple-ring" />
             <div className={`flex items-center justify-center w-14 h-14 transition-opacity duration-150 ${clickedCity === 'hyderabad' ? 'opacity-0' : 'opacity-100'}`}>
-              <TelanganaMap className="w-full h-full" style={{ color: 'var(--gold-dark)', strokeWidth: 25 }} />
+              <TelanganaMap className="w-full h-full" style={{ color: 'var(--magenta-dark)', strokeWidth: 25 }} />
             </div>
             <div className="font-playfair text-[1.15rem] text-ink-dark tracking-wide">Hyderabad</div>
             <div className="font-lato text-[0.65rem] tracking-[0.2em] uppercase" style={{ color: 'var(--text-light)' }}>Telangana</div>
@@ -85,6 +84,7 @@ export default function LocationPage({ onSelectCity, onBack }) {
           <button
             id="btn-chennai"
             className="city-btn chennai"
+            style={{ animation: 'fadeIn 0.9s ease 0.1s both' }}
             onClick={(e) => {
               setClickedCity('chennai');
               const rect = e.currentTarget.querySelector('.w-14').getBoundingClientRect();
@@ -97,7 +97,7 @@ export default function LocationPage({ onSelectCity, onBack }) {
           >
             <div className="ripple-ring" />
             <div className={`flex items-center justify-center w-14 h-14 transition-opacity duration-150 ${clickedCity === 'chennai' ? 'opacity-0' : 'opacity-100'}`}>
-              <TamilNaduMap className="w-full h-full" style={{ color: 'var(--gold-dark)', strokeWidth: 2.5 }} />
+              <TamilNaduMap className="w-full h-full" style={{ color: 'var(--magenta-dark)', strokeWidth: 2.5 }} />
             </div>
             <div className="font-playfair text-[1.15rem] text-ink-dark tracking-wide">Chennai</div>
             <div className="font-lato text-[0.65rem] tracking-[0.2em] uppercase" style={{ color: 'var(--text-light)' }}>Tamil Nadu</div>

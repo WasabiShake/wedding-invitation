@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react'
 
 const toggleStyle = {
   background: 'transparent',
-  border: '1px solid rgba(212,175,55,0.35)',
+  border: '1px solid var(--magenta-dark)',
   borderRadius: '50%',
   width: '44px',
   height: '44px',
   cursor: 'pointer',
-  color: 'var(--gold-dark)',
+  color: 'var(--magenta-dark)',
   transition: 'background 0.2s, border-color 0.2s',
   display: 'flex',
   alignItems: 'center',
@@ -96,7 +96,7 @@ export default function IntroPage({ onBegin }) {
         transition: 'opacity 0.7s ease',
         gap: '2rem',
         padding: '2rem',
-        paddingTop: '25vh'
+        paddingTop: '30vh'
       }}
     >
       {/* Mandala ring — mirrors LandingPage */}
@@ -104,16 +104,16 @@ export default function IntroPage({ onBegin }) {
 
       {/* Branding */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', position: 'relative', zIndex: 1 }}>
-        <div style={{ fontSize: '3rem', color: 'var(--gold-mid)', lineHeight: 1 }}>ॐ</div>
+        <div style={{ fontSize: '3rem', color: 'var(--magenta-mid)', lineHeight: 1 }}>ॐ</div>
         <p style={{
           fontFamily: "'Great Vibes', cursive",
           fontSize: 'clamp(2.2rem, 7vw, 3.5rem)',
-          background: 'linear-gradient(135deg, var(--gold-dark), var(--gold-mid), var(--gold-shine), var(--gold-mid), var(--gold-dark))',
+          background: 'linear-gradient(135deg, var(--magenta-dark), var(--magenta-mid), var(--magenta-lightest), var(--magenta-mid), var(--magenta-dark))',
           backgroundSize: '200% auto',
           WebkitBackgroundClip: 'text',
           backgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
-          animation: 'goldShimmer 3s linear infinite',
+          animation: 'magentaShimmer 3s linear infinite',
           marginTop: '0.25rem',
         }}>Vaishnavi &amp; Abishek</p>
         <p style={{ fontFamily: "'Lato', sans-serif", fontSize: '0.68rem', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--text-light)' }}>
@@ -122,7 +122,7 @@ export default function IntroPage({ onBegin }) {
       </div>
 
       {/* Divider */}
-      <div style={{ width: '120px', height: '1px', background: 'linear-gradient(90deg, transparent, var(--gold-mid), transparent)', position: 'relative', zIndex: 1 }} />
+      <div style={{ width: '120px', height: '1px', background: 'linear-gradient(90deg, transparent, var(--magenta-mid), transparent)', position: 'relative', zIndex: 1 }} />
 
       {/* Controls row: [fullscreen] [▶ play] [mute] */}
       <div style={{ display: 'flex', gap: '1.2rem', alignItems: 'center', position: 'relative', zIndex: 1 }}>
@@ -140,7 +140,7 @@ export default function IntroPage({ onBegin }) {
             height: '64px',
             borderRadius: '50%',
             border: 'none',
-            background: 'linear-gradient(135deg, var(--gold-dark), var(--gold-mid))',
+            background: 'linear-gradient(135deg, var(--magenta-dark), var(--magenta-mid))',
             cursor: 'pointer',
             color: 'var(--beige-lightest)',
             display: 'flex',
