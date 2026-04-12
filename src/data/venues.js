@@ -15,7 +15,7 @@ export const venues = {
         time: '7:30 AM – 9:30 AM',
       },*/
       {
-        name: 'Vrutham',
+        name: 'Virathamam',
         icon: 'mehendi',
         day: 'Day 1',
         badge: 'Pre-Wedding Ritual',

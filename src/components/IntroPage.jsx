@@ -1,17 +1,21 @@
 import { useState, useEffect } from 'react'
 
 const toggleStyle = {
-  background: 'transparent',
+  background: '#fed5cc87',
   border: '1px solid var(--magenta-dark)',
   borderRadius: '50%',
   width: '44px',
   height: '44px',
   cursor: 'pointer',
   color: 'var(--magenta-dark)',
-  transition: 'background 0.2s, border-color 0.2s',
+  transition: 'all 0.3s ease',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  backdropFilter: 'blur(4px)',
+  WebkitBackdropFilter: 'blur(4px)',
+  transform: 'translateZ(0)',
+  boxShadow: '0 4px 15px rgba(0, 0, 0, 0.08)',
 }
 
 function MuteIcon({ muted }) {

@@ -65,8 +65,8 @@ export default function LandingPage({ onEnter }) {
         style={{ animation: 'fadeInUp 1.2s ease both' }}
       >
         <p
-          className="font-lato font-light tracking-[0.35em] text-xs uppercase"
-          style={{ color: 'var(--text-light)', animation: 'fadeInUp 1.4s ease both' }}
+          className="font-lato tracking-[0.35em] text-xs uppercase"
+          style={{ color: 'var(--magenta-dark)', animation: 'fadeInUp 1.4s ease both' }}
         >
           Sundar Venkatraman & Saraswathy Sundar
         </p>

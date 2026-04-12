@@ -28,7 +28,7 @@ export default function EventCard({ event, index }) {
 
   return (
     <div
-      className={`event-card accent-${accent} rounded-2xl overflow-hidden relative transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl`}
+      className={`event-card accent-${accent} rounded-2xl overflow-hidden relative`}
       style={{ animationDelay: `${0.1 + index * 0.08}s` }}
     >
       {/* Accent colour strip */}

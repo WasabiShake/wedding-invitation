@@ -113,6 +113,7 @@ export default function VenuePage({ city, onBack }) {
                     background: '#fed5cc70',
                     backdropFilter: 'blur(4px)',
                     WebkitBackdropFilter: 'blur(4px)',
+                    transform: 'translateZ(0)',
                     boxShadow: '0 4px 20px rgba(158, 16, 69, 0.06)',
                   }}
                 >{day}</h2>
@@ -124,6 +125,7 @@ export default function VenuePage({ city, onBack }) {
                   background: '#fed5cc70',
                   backdropFilter: 'blur(4px)',
                   WebkitBackdropFilter: 'blur(4px)',
+                  transform: 'translateZ(0)',
                   boxShadow: '0 4px 20px rgba(158, 16, 69, 0.06)',
                 }}
               >{date}</p>
