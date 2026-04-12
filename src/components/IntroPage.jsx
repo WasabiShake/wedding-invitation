@@ -12,8 +12,8 @@ const toggleStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  backdropFilter: 'blur(4px)',
   WebkitBackdropFilter: 'blur(4px)',
+  backdropFilter: 'blur(4px)',
   transform: 'translateZ(0)',
   boxShadow: '0 4px 15px rgba(0, 0, 0, 0.08)',
 }

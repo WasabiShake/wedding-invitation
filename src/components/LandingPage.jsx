@@ -111,8 +111,8 @@ export default function LandingPage({ onEnter }) {
         className="relative z-10 mt-2 px-6 py-1.5 rounded-full"
         style={{
           background: '#fed5cc87',
-          backdropFilter: 'blur(4px)',
           WebkitBackdropFilter: 'blur(4px)',
+          backdropFilter: 'blur(4px)',
           border: '1px solid rgba(158, 16, 69, 0.15)',
           display: 'inline-block',
           animation: 'fadeInUp 1.8s ease both'
@@ -132,8 +132,8 @@ export default function LandingPage({ onEnter }) {
           className="px-5 py-1.5 rounded-full"
           style={{
             background: '#fed5cc87',
-            backdropFilter: 'blur(4px)',
             WebkitBackdropFilter: 'blur(4px)',
+            backdropFilter: 'blur(4px)',
             border: '1px solid rgba(158, 16, 69, 0.1)',
             animation: 'fadeInUp 2s ease both',
           }}

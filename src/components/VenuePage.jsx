@@ -111,8 +111,8 @@ export default function VenuePage({ city, onBack }) {
                   style={{
                     color: 'var(--magenta-dark)',
                     background: '#fed5cc70',
-                    backdropFilter: 'blur(4px)',
                     WebkitBackdropFilter: 'blur(4px)',
+                    backdropFilter: 'blur(4px)',
                     transform: 'translateZ(0)',
                     boxShadow: '0 4px 20px rgba(158, 16, 69, 0.06)',
                   }}
@@ -123,8 +123,8 @@ export default function VenuePage({ city, onBack }) {
                 style={{
                   color: 'var(--aqua-mid)',
                   background: '#fed5cc70',
-                  backdropFilter: 'blur(4px)',
                   WebkitBackdropFilter: 'blur(4px)',
+                  backdropFilter: 'blur(4px)',
                   transform: 'translateZ(0)',
                   boxShadow: '0 4px 20px rgba(158, 16, 69, 0.06)',
                 }}

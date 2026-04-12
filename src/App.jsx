@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, useEffect } from 'react'
 import TransitionOverlay from './components/TransitionOverlay'
 import LandingPage from './components/LandingPage'
 import LocationPage from './components/LocationPage'
@@ -56,6 +56,30 @@ export default function App() {
   const audioRef = useRef(null)
   const [muted, setMuted] = useState(false)
   const [introVisible, setIntroVisible] = useState(true)
+  const [assetsLoaded, setAssetsLoaded] = useState(false)
+
+  useEffect(() => {
+    const imagesToLoad = [templeBg, cloudsBg, elephantCorner, flowerCorner]
+    let loadedCount = 0
+
+    const checkAllLoaded = () => {
+      loadedCount++
+      if (loadedCount === imagesToLoad.length) {
+        if (document.fonts) {
+          document.fonts.ready.then(() => setAssetsLoaded(true))
+        } else {
+          setAssetsLoaded(true)
+        }
+      }
+    }
+
+    imagesToLoad.forEach(src => {
+      const img = new Image()
+      img.src = src
+      img.onload = checkAllLoaded
+      img.onerror = checkAllLoaded
+    })
+  }, [])
 
   const handleBegin = ({ muted: startMuted }) => {
     if (audioRef.current) {
@@ -119,6 +143,14 @@ export default function App() {
 
   return (
     <>
+      {/* Loading Spinner Overlay */}
+      {!assetsLoaded && (
+        <div className="loading-spinner-overlay">
+          <div className="spinner"></div>
+          <p className="loading-text">Loading...</p>
+        </div>
+      )}
+
       {/* Background music */}
       <audio ref={audioRef} src={bgMusic} loop preload="auto" />
 
