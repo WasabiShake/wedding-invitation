@@ -1,14 +1,17 @@
 import { venues } from '../data/venues'
 import EventCard from './EventCard'
-import { IoArrowBack, IoChevronDown } from 'react-icons/io5'
+import { IoArrowBack, IoArrowForward, IoChevronDown } from 'react-icons/io5'
 import { MdLocationPin } from 'react-icons/md'
 import { PiStarFourFill } from 'react-icons/pi'
 import TelanganaMap from './maps/TelanganaMap'
 import TamilNaduMap from './maps/TamilNaduMap'
 
-export default function VenuePage({ city, onBack }) {
+export default function VenuePage({ city, onBack, onSwitchVenue }) {
   const data = venues[city]
   if (!data) return null
+
+  const otherCityKey = city === 'hyderabad' ? 'chennai' : 'hyderabad'
+  const otherCityLabel = venues[otherCityKey].cityLabel
 
   return (
     <section
@@ -34,9 +37,18 @@ export default function VenuePage({ city, onBack }) {
       <button
         id="back-to-location"
         onClick={onBack}
-        className="absolute top-6 left-6 glass-back-btn"
+        className="fixed top-6 left-6 z-50 glass-back-btn"
       >
         <IoArrowBack className="text-base" /> Cities
+      </button>
+
+      {/* Switch venue button */}
+      <button
+        id="switch-venue"
+        onClick={() => onSwitchVenue(otherCityKey)}
+        className="fixed top-6 right-6 z-50 glass-back-btn"
+      >
+        {otherCityLabel} <IoArrowForward className="text-base" />
       </button>
 
       {/* Venue header */}

@@ -198,7 +198,7 @@ export default function App() {
         <main className={`page-transition-wrapper ${overlayActive ? 'fade-out' : ''} ${isZooming ? 'is-zooming' : ''}`}>
           {page === 'landing' && <LandingPage onEnter={goToLocation} />}
           {page === 'location' && <LocationPage onSelectCity={goToVenue} onBack={() => goBack('landing')} />}
-          {page === 'venue' && <VenuePage city={selectedCity} onBack={() => goBack('location')} />}
+          {page === 'venue' && <VenuePage city={selectedCity} onBack={() => goBack('location')} onSwitchVenue={(targetCity) => transition(() => setCity(targetCity))} />}
         </main>
       )}
     </>
