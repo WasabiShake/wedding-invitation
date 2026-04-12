@@ -68,7 +68,7 @@ export default function LandingPage({ onEnter }) {
           className="font-lato font-light tracking-[0.35em] text-xs uppercase"
           style={{ color: 'var(--text-light)', animation: 'fadeInUp 1.4s ease both' }}
         >
-          Together with their families
+          Sundar Venkatraman & Saraswathy Sundar
         </p>
 
         <div className="garland-line">
